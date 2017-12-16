@@ -1,0 +1,5 @@
+virgo_ip:
+    resource: "@VirgoIpBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

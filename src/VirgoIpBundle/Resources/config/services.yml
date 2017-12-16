@@ -1,0 +1,5 @@
+services:
+    api.action_listener:
+        class: VirgoIpBundle\EventListener\ApiListener
+        tags:
+            - { name: kernel.event_subscriber }
