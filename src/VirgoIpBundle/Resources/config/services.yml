@@ -15,3 +15,4 @@ services:
         arguments: [@doctrine.orm.entity_manager]
     driver.ipv4.btree:
         class: VirgoIpBundle\Services\Drivers\BTreeDrivers\BTreeIpV4Driver
+        arguments: [@doctrine.orm.entity_manager]

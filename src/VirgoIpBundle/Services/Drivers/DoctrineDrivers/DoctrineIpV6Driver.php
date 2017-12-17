@@ -26,7 +26,25 @@ class DoctrineIpV6Driver implements DriverInterface
         $this->em = $em;
     }
 
-    public function add(string $ip): void
+    /**
+     * @param string $ip
+     * @return int
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function add(string $ip): int
+    {
+        $count = $this->getCount($ip);
+        if ($count > 0) {
+            $count++;
+            $this->update($ip);
+        } else {
+            $count = $this->createNew($ip);
+        }
+
+        return $count;
+    }
+
+    public function update(string $ip): void
     {
         $conn = $this->em->getConnection();
         $query = 'UPDATE IpV6Storage v6 SET v6.count = v6.count + 1 WHERE v6.ip = :ip';

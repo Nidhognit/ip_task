@@ -31,7 +31,7 @@ class BtreeTest extends KernelTestCase
             '168.0.0.1' => [
                 'child' => [
                     '167.2.1.4' => [
-                        'count' => 4
+                        'count' => 4,
                     ],
                 ],
                 'count' => 150,
@@ -56,7 +56,7 @@ class BtreeTest extends KernelTestCase
         $this->assertEquals(4, $count);
 
         $count = $btree->find('167.2.1.5');
-        $this->assertNull($count);
+        $this->assertEquals(0, $count);
     }
 
 

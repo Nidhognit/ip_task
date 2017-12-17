@@ -27,15 +27,8 @@ class DriverProvider
     public function addIp(string $ip): int
     {
         $driver = $this->getIpDriver($ip);
-        $count = $driver->getCount($ip);
-        if ($count > 0) {
-            $count++;
-            $driver->add($ip);
-        } else {
-            $count = $driver->createNew($ip);
-        }
 
-        return $count;
+        return $driver->add($ip);
     }
 
     /**

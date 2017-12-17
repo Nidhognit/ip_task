@@ -9,7 +9,7 @@
 namespace VirgoIpBundle\Services\Drivers\BTreeDrivers;
 
 
-class MyBtree
+class MyBtree implements BtreeInterface
 {
 
     protected const SECOND_LENGTH = 5;
@@ -34,12 +34,11 @@ class MyBtree
         $this->btreeData = $btreeData;
     }
 
-    public function root()
-    {
-
-    }
-
-    public function find(string $ip): ?int
+    /**
+     * @param string $ip
+     * @return int|null
+     */
+    public function find(string $ip): int
     {
         foreach ($this->btreeData as $key => $valueData) {
             if ($ip === $key) {
@@ -53,9 +52,13 @@ class MyBtree
             }
         }
 
-        return null;
+        return 0;
     }
 
+    /**
+     * @param string $ip
+     * @return int
+     */
     public function add(string $ip): int
     {
         if (empty($this->btreeData)) {
@@ -90,7 +93,11 @@ class MyBtree
         return 1;
     }
 
-    protected function splitSheet(array &$sheetData, $parentIp)
+    /**
+     * @param array $sheetData
+     * @param $parentIp
+     */
+    protected function splitSheet(array &$sheetData, $parentIp): void
     {
         $leftChildList = [];
         $rightChildList = [];
@@ -115,6 +122,10 @@ class MyBtree
         ksort($this->btreeData);
     }
 
+    /**
+     * @param array $sheetData
+     * @param string $ip
+     */
     protected function addChild(array &$sheetData, string $ip): void
     {
         $sheetData['child'][$ip] = [
@@ -123,7 +134,11 @@ class MyBtree
 
     }
 
-    protected function boot(string $ip)
+    /**
+     * @param string $ip
+     * @return int
+     */
+    protected function boot(string $ip): int
     {
         $this->btreeData = [
             $ip => [

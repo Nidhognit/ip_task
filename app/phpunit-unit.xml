@@ -17,6 +17,7 @@
         </testsuite>
         <testsuite name="Drivers">
             <file>../src/VirgoIpBundle/Tests/Services/DoctrineIpV6DriverTest.php</file>
+            <file>../src/VirgoIpBundle/Tests/Services/BtreeTest.php</file>
         </testsuite>
     </testsuites>
 
