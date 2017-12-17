@@ -12,5 +12,6 @@ services:
 
     driver.ipv6.doctrine:
         class: VirgoIpBundle\Services\Drivers\DoctrineDrivers\DoctrineIpV6Driver
+        arguments: [@doctrine.orm.entity_manager]
     driver.ipv4.btree:
         class: VirgoIpBundle\Services\Drivers\BTreeDrivers\BTreeIpV4Driver

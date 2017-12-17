@@ -17,7 +17,7 @@ class IpControllerTest extends KernelTestCase
 {
     public function setUp()
     {
-
+        $_SERVER['KERNEL_DIR'] = '/var/www/virgoiptask/app/';
         self::bootKernel();
     }
 

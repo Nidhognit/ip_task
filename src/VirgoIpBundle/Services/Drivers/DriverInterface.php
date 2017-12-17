@@ -14,7 +14,7 @@ interface DriverInterface
      * @param string $ip
      * @return int
      */
-    public function add(string $ip): int;
+    public function add(string $ip): void;
 
     /**
      * @param string $ip

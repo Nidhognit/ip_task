@@ -15,6 +15,9 @@
         <testsuite name="Controller">
             <file>../src/VirgoIpBundle/Tests/Controller/IpControllerTest.php</file>
         </testsuite>
+        <testsuite name="Drivers">
+            <file>../src/VirgoIpBundle/Tests/Services/DoctrineIpV6DriverTest.php</file>
+        </testsuite>
     </testsuites>
 
     <!--

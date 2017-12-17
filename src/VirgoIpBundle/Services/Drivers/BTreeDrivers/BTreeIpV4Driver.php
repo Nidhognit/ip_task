@@ -12,10 +12,9 @@ use VirgoIpBundle\Services\Drivers\DriverInterface;
 
 class BTreeIpV4Driver implements DriverInterface
 {
-    public function add(string $ip): int
+    public function add(string $ip): void
     {
 
-        return 1;
     }
 
     public function createNew(string $ip): int

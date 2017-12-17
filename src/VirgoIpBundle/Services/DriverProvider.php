@@ -29,7 +29,8 @@ class DriverProvider
         $driver = $this->getIpDriver($ip);
         $count = $driver->getCount($ip);
         if ($count > 0) {
-            $count = $driver->add($ip);
+            $count++;
+            $driver->add($ip);
         } else {
             $count = $driver->createNew($ip);
         }
@@ -46,7 +47,11 @@ class DriverProvider
     {
         $driver = $this->getIpDriver($ip);
 
-        return $driver->getCount($ip);
+        if ($driver->getCount($ip) > 0) {
+            return $driver->add($ip);
+        }
+
+        return 0;
     }
 
     /**
