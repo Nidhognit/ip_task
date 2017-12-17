@@ -33,6 +33,7 @@ class DoctrineIpV6Driver implements DriverInterface
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':ip', $ip, \PDO::PARAM_STR);
         $stmt->execute();
+        $this->em->clear(IpV6Storage::class);
     }
 
     /**
