@@ -5,13 +5,8 @@
         backupGlobals="false"
         backupStaticAttributes="false"
         colors="true"
-        convertErrorsToExceptions="true"
-        convertNoticesToExceptions="true"
-        convertWarningsToExceptions="true"
-        processIsolation="false"
         stopOnFailure="false"
-        syntaxCheck="false"
-        bootstrap="bootstrap.php.cache">
+        bootstrap="autoload.php">
 
     <testsuites>
         <testsuite name="Api listener">

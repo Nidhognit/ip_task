@@ -15,9 +15,16 @@ use VirgoIpBundle\Controller\IpController;
 
 class IpControllerTest extends KernelTestCase
 {
+    public function setUp()
+    {
+
+        self::bootKernel();
+    }
+
     public function testAddAction()
     {
         $controller = new IpController();
+        $controller->setContainer(self::$kernel->getContainer());
         $request = new Request(['ip' => '127.0.0.1']);
         $response = $controller->addAction($request);
 

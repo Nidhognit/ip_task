@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use VirgoIpBundle\Exceptions\InvalidIpException;
+use VirgoIpBundle\Exceptions\UnknownDriverException;
+use VirgoIpBundle\Exceptions\UnknownIPException;
 
 class IpController extends Controller
 {
@@ -17,12 +19,13 @@ class IpController extends Controller
      * @param Request $request
      * @return JsonResponse
      * @throws InvalidIpException
+     * @throws UnknownDriverException
      */
     public function addAction(Request $request): JsonResponse
     {
         $ip = $this->validateIp($request);
-
-        $count = 1;
+        $driverProvider = $this->get('driver.provider');
+        $count = $driverProvider->addIp($ip);
 
         return new JsonResponse(['count' => $count]);
     }
@@ -33,12 +36,18 @@ class IpController extends Controller
      * @param Request $request
      * @return JsonResponse
      * @throws InvalidIpException
+     * @throws UnknownIPException
+     * @throws UnknownDriverException
      */
     public function queryAction(Request $request): JsonResponse
     {
         $ip = $this->validateIp($request);
+        $driverProvider = $this->get('driver.provider');
+        $count = $driverProvider->getIpCount($ip);
 
-        $count = 1;
+        if ($count === 0) {
+            throw new UnknownIPException();
+        }
 
         return new JsonResponse(['count' => $count]);
     }

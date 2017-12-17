@@ -34,10 +34,8 @@ class ApiListener implements EventSubscriberInterface
         } else {
             $message = 'Unknown error';
         }
+
         $response = new JsonResponse(['errorMessage' => $message], 500);
-
-
         $event->setResponse($response);
-
     }
 }

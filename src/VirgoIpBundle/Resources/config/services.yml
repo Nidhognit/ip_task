@@ -3,3 +3,14 @@ services:
         class: VirgoIpBundle\EventListener\ApiListener
         tags:
             - { name: kernel.event_subscriber }
+
+    driver.provider:
+        class: VirgoIpBundle\Services\DriverProvider
+        calls:
+           - [setIpv4driver, [@driver.ipv4.btree]]
+           - [setIpv6driver, [@driver.ipv6.doctrine]]
+
+    driver.ipv6.doctrine:
+        class: VirgoIpBundle\Services\Drivers\DoctrineDrivers\DoctrineIpV6Driver
+    driver.ipv4.btree:
+        class: VirgoIpBundle\Services\Drivers\BTreeDrivers\BTreeIpV4Driver
