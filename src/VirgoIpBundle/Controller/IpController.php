@@ -14,7 +14,7 @@ use VirgoIpBundle\Exceptions\UnknownIPException;
 class IpController extends Controller
 {
     /**
-     * @Route("/add", name="ip_add", defaults={"_format": "json"})
+     * @Route("/ip/add", name="ip_add", defaults={"_format": "json"})
      * @Method("POST")
      * @param Request $request
      * @return JsonResponse
@@ -31,7 +31,7 @@ class IpController extends Controller
     }
 
     /**
-     * @Route("/query", name="ip_query", defaults={"_format": "json"})
+     * @Route("/ip/query", name="ip_query", defaults={"_format": "json"})
      * @Method("GET")
      * @param Request $request
      * @return JsonResponse

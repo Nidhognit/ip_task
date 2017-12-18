@@ -39,7 +39,7 @@ class DoctrineIpV6DriverTest extends KernelTestCase
         $driver = $this->container->get('driver.ipv6.doctrine');
         $count = $driver->createNew(self::IP);
 
-        $this->assertTrue(1, $count);
+        $this->assertEquals(1, $count);
     }
 
     public function testGetCount()
@@ -49,7 +49,7 @@ class DoctrineIpV6DriverTest extends KernelTestCase
 
         $count = $driver->getCount(self::IP);
 
-        $this->assertTrue(1, $count);
+        $this->assertEquals(1, $count);
     }
 
     public function testAdd()
@@ -58,12 +58,12 @@ class DoctrineIpV6DriverTest extends KernelTestCase
         $driver->createNew(self::IP);
 
         $count = $driver->add(self::IP);
-        $this->assertTrue(2, $count);
+        $this->assertEquals(2, $count);
 
         $count = $driver->add(self::IP);
-        $this->assertTrue(3, $count);
+        $this->assertEquals(3, $count);
 
         $count = $driver->getCount(self::IP);
-        $this->assertTrue(3, $count);
+        $this->assertEquals(3, $count);
     }
 }

@@ -17,7 +17,6 @@ class IpControllerTest extends KernelTestCase
 {
     public function setUp()
     {
-        $_SERVER['KERNEL_DIR'] = '/var/www/virgoiptask/app/';
         self::bootKernel();
     }
 
@@ -33,11 +32,17 @@ class IpControllerTest extends KernelTestCase
         $content = json_decode($response->getContent(), true);
 
         $this->assertGreaterThanOrEqual(1, $content['count']);
+
+        $response = $controller->addAction($request);
+        $content = json_decode($response->getContent(), true);
+
+        $this->assertGreaterThanOrEqual(2, $content['count']);
     }
 
     public function testQueryAction()
     {
         $controller = new IpController();
+        $controller->setContainer(self::$kernel->getContainer());
         $request = new Request(['ip' => '127.0.0.1']);
         $response = $controller->queryAction($request);
 
