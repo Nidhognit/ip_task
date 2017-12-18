@@ -59,7 +59,6 @@ class BtreeTest extends KernelTestCase
         $this->assertEquals(0, $count);
     }
 
-
     public function testSet()
     {
         $btree = new MyBtree();

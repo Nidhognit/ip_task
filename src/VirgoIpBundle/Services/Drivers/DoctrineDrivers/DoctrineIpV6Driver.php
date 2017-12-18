@@ -62,10 +62,12 @@ class DoctrineIpV6Driver implements DriverInterface
     public function createNew(string $ip): int
     {
         try {
+            $this->em->getConnection()->beginTransaction();
             $ipStorage = new IpV6Storage();
             $ipStorage->setIp($ip);
             $this->em->persist($ipStorage);
             $this->em->flush();
+            $this->em->commit();
             $count = $ipStorage->getCount();
         } catch (\Throwable $exception) {
             $count = $this->getCount($ip);

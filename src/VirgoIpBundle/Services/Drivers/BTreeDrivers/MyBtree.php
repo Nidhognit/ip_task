@@ -11,8 +11,8 @@ namespace VirgoIpBundle\Services\Drivers\BTreeDrivers;
 
 class MyBtree implements BtreeInterface
 {
-
     protected const SECOND_LENGTH = 5;
+
     /**
      * @var array
      */
@@ -131,7 +131,6 @@ class MyBtree implements BtreeInterface
         $sheetData['child'][$ip] = [
             'count' => 1,
         ];
-
     }
 
     /**

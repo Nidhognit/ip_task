@@ -19,7 +19,6 @@ use VirgoIpBundle\Exceptions\InvalidIpException;
 
 class ApiListenerTest extends KernelTestCase
 {
-
     /**
      * @param string $exceptionClass
      * @param string $message
@@ -40,7 +39,6 @@ class ApiListenerTest extends KernelTestCase
         $content = json_decode($response->getContent(), true);
 
         $this->assertEquals($message, $content['errorMessage']);
-
     }
 
     public function getExceptionsProvider()
@@ -50,5 +48,4 @@ class ApiListenerTest extends KernelTestCase
             'Custom exception' => [DBALException::class, 'Unknown error'],
         ];
     }
-
 }

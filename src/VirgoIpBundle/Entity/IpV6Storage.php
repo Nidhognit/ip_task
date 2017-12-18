@@ -5,9 +5,11 @@
  * Date: 17.12.17
  * Time: 3:33
  */
+
 namespace VirgoIpBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * By default, doctrine can't create BTree index
  * you can use next SQl:
