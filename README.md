@@ -3,7 +3,23 @@ This is my Ip task implementation
 
 Driver: PDO
 
-Interface: REST interface based on json
+Interface: REST interface based on json, CLI interface
+
+#CLI interface
+Add new:
+```console
+app/console ip:add {ip_address}
+```
+
+Get Ip Count
+
+```console
+app/console ip:query {ip_address}
+```
+
+#REST Interface
+ - POST: /ip/add
+ - GET:  /ip/query
 
 # Tests
 You can find all tests in app/phpunit-unit.xml

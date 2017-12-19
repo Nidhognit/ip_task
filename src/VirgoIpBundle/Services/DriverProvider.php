@@ -8,6 +8,7 @@
 
 namespace VirgoIpBundle\Services;
 
+use VirgoIpBundle\Exceptions\InvalidIpException;
 use VirgoIpBundle\Exceptions\UnknownDriverException;
 use VirgoIpBundle\Services\Drivers\DriverInterface;
 
@@ -40,11 +41,21 @@ class DriverProvider
     {
         $driver = $this->getIpDriver($ip);
 
-        if ($driver->getCount($ip) > 0) {
-            return $driver->add($ip);
+        return $driver->getCount($ip);
+    }
+
+    /**
+     * @param null|string $ip
+     * @return string
+     * @throws InvalidIpException
+     */
+    public function validateIp(?string $ip): string
+    {
+        if ($ip === null || !filter_var($ip, FILTER_VALIDATE_IP)) {
+            throw new InvalidIpException();
         }
 
-        return 0;
+        return $ip;
     }
 
     /**

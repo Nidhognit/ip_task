@@ -23,8 +23,8 @@ class IpController extends Controller
      */
     public function addAction(Request $request): JsonResponse
     {
-        $ip = $this->validateIp($request);
         $driverProvider = $this->get('driver.provider');
+        $ip = $driverProvider->validateIp($request->get('ip'));
         $count = $driverProvider->addIp($ip);
 
         return new JsonResponse(['count' => $count]);
@@ -41,8 +41,8 @@ class IpController extends Controller
      */
     public function queryAction(Request $request): JsonResponse
     {
-        $ip = $this->validateIp($request);
         $driverProvider = $this->get('driver.provider');
+        $ip = $driverProvider->validateIp($request->get('ip'));
         $count = $driverProvider->getIpCount($ip);
 
         if ($count === 0) {
@@ -50,20 +50,5 @@ class IpController extends Controller
         }
 
         return new JsonResponse(['count' => $count]);
-    }
-
-    /**
-     * @param Request $request
-     * @return string
-     * @throws InvalidIpException
-     */
-    protected function validateIp(Request $request): string
-    {
-        $ip = $request->get('ip');
-        if ($ip === null || !filter_var($ip, FILTER_VALIDATE_IP)) {
-            throw new InvalidIpException();
-        }
-
-        return $ip;
     }
 }
