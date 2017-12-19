@@ -35,7 +35,7 @@ class BTreeIpV4Driver implements DriverInterface
     protected function getBtree()
     {
         if (!$this->btree) {
-            $this->btree = new MyBtree();
+            $this->btree = new Btree();
             $this->ipStorage = $this->em->getRepository(IpV4Storage::class)->find(1);
             if (!$this->ipStorage) {
                 $this->ipStorage = new IpV4Storage();

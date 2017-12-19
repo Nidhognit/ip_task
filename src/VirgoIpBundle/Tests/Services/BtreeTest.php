@@ -10,7 +10,7 @@ namespace VirgoIpBundle\Tests\Services;
 
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use VirgoIpBundle\Services\Drivers\BTreeDrivers\MyBtree;
+use VirgoIpBundle\Services\Drivers\BTreeDrivers\Btree;
 
 class BtreeTest extends KernelTestCase
 {
@@ -37,7 +37,7 @@ class BtreeTest extends KernelTestCase
                 'count' => 150,
             ],
         ];
-        $btree = new MyBtree();
+        $btree = new Btree();
         $btree->setBtreeData($data);
 
         $count = $btree->find('127.0.0.1');
@@ -61,7 +61,7 @@ class BtreeTest extends KernelTestCase
 
     public function testSet()
     {
-        $btree = new MyBtree();
+        $btree = new Btree();
 
         $count = $btree->add('127.0.0.1');
         $this->assertEquals(1, $count);

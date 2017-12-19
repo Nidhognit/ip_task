@@ -9,7 +9,7 @@
 namespace VirgoIpBundle\Services\Drivers\BTreeDrivers;
 
 
-class MyBtree implements BtreeInterface
+class Btree implements BtreeInterface
 {
     protected const SECOND_LENGTH = 5;
 
